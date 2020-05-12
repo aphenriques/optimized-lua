@@ -6,12 +6,11 @@
 # Your platform. See PLATS for possible values.
 PLAT= none
 
-CC= gcc -std=gnu99
-CFLAGS= -O2 -Wall -Wextra -DLUA_COMPAT_5_2 $(SYSCFLAGS) $(MYCFLAGS)
+CFLAGS= -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
-AR= ar rcu
+AR+= rcu
 RANLIB= ranlib
 RM= rm -f
 
@@ -19,8 +18,8 @@ SYSCFLAGS=
 SYSLDFLAGS=
 SYSLIBS=
 
-MYCFLAGS=
-MYLDFLAGS=
+MYCFLAGS=-O3 -march=native -flto
+MYLDFLAGS=-O3 -march=native -flto -Wl,-export_dynamic
 MYLIBS=
 MYOBJS=
 
