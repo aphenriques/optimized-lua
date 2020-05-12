@@ -12,6 +12,8 @@ Session.vim
 *.so
 *.dylib
 *.a
+src/lua
+src/luac
 
 # OS generated files #
 ######################
