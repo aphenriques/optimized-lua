@@ -11,7 +11,9 @@ Modified source code of Lua 5.3.5 tuned for performance.
   * set optimization level 3 (-O3)
   * enable link time optimization (-flto)
   * enable all instruction subsets supported by the local machine (-march=native)
-
+* computed goto:
+  * Miro Knejp's https://github.com/mknejp/computed-goto
+  * check out his excelent talk ["Non-conforming C++: the Secrets the Committee Is Hiding From You" on CppCon 2019](https://youtu.be/IAdLwUXRUvg) where he explains computed goto starting on [31:17](https://youtu.be/IAdLwUXRUvg?t=1877) (Lua implementation starts on [40:12](https://youtu.be/IAdLwUXRUvg?t=2412)
 
 # Other modifications
 
@@ -26,6 +28,8 @@ There are other modifications related to building the code in different environm
 # Author
 
 André Pereira Henriques [aphenriques (at) outlook (dot) com].
+
+Most of the work of the techniques employed in this repository were done by others. See each optimization on [Optimization](#optimization) for the references.
 
 
 # Donation
