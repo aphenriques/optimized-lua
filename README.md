@@ -29,7 +29,7 @@ There are other modifications related to building the code in different environm
 
 André Pereira Henriques [aphenriques (at) outlook (dot) com].
 
-Most of the work of the techniques employed in this repository were done by others. See each optimization on [Optimization](#optimization) for the references.
+Most of the work of the techniques employed in this repository were done by others. See each optimization on [Optimization](#optimizations) for the references.
 
 
 # Donation
