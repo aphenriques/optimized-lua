@@ -45,7 +45,10 @@ LUAI_FUNC void luaH_setint (lua_State *L, Table *t, lua_Integer key,
                                                     TValue *value);
 LUAI_FUNC const TValue *luaH_getshortstr (Table *t, TString *key);
 LUAI_FUNC const TValue *luaH_getstr (Table *t, TString *key);
-LUAI_FUNC const TValue *luaH_get (Table *t, const TValue *key);
+
+/* Inlining functions with hot prolog and epilog */
+__attribute__((always_inline)) LUAI_FUNC const TValue *luaH_get (Table *t, const TValue *key);
+
 LUAI_FUNC TValue *luaH_newkey (lua_State *L, Table *t, const TValue *key);
 LUAI_FUNC TValue *luaH_set (lua_State *L, Table *t, const TValue *key);
 LUAI_FUNC Table *luaH_new (lua_State *L);
