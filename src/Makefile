@@ -10,8 +10,10 @@ CFLAGS= -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
-AR+= rcu
+ARFLAGS= rcu
+ifndef RANLIB
 RANLIB= ranlib
+endif
 RM= rm -f
 
 SYSCFLAGS=
@@ -19,7 +21,7 @@ SYSLDFLAGS=
 SYSLIBS=
 
 MYCFLAGS=-O3 -march=native -flto
-MYLDFLAGS=-O3 -march=native -flto -Wl,-export_dynamic
+MYLDFLAGS=-O3 -march=native -flto
 MYLIBS=
 MYOBJS=
 
@@ -55,7 +57,7 @@ o:	$(ALL_O)
 a:	$(ALL_A)
 
 $(LUA_A): $(BASE_O)
-	$(AR) $@ $(BASE_O)
+	$(AR) $(ARFLAGS) $@ $(BASE_O)
 	$(RANLIB) $@
 
 $(LUA_T): $(LUA_O) $(LUA_A)
@@ -77,6 +79,7 @@ echo:
 	@echo "LDFLAGS= $(SYSLDFLAGS)"
 	@echo "LIBS= $(LIBS)"
 	@echo "AR= $(AR)"
+	@echo "ARFLAGS= $(ARFLAGS)"
 	@echo "RANLIB= $(RANLIB)"
 	@echo "RM= $(RM)"
 
@@ -109,11 +112,11 @@ linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
 
 macosx:
-	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-lreadline"
+	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-Wl,-export_dynamic -lreadline"
 
 mingw:
 	$(MAKE) "LUA_A=lua53.dll" "LUA_T=lua.exe" \
-	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
+	"AR=$(CC)" "ARFLAGS=-shared -o" "RANLIB=strip --strip-unneeded" \
 	"SYSCFLAGS=-DLUA_BUILD_AS_DLL" "SYSLIBS=" "SYSLDFLAGS=-s" lua.exe
 	$(MAKE) "LUAC_T=luac.exe" luac.exe
 

@@ -14,9 +14,6 @@ Modified source code of Lua 5.3.5 tuned for performance.
 * computed goto:
   * Miro Knejp's https://github.com/mknejp/computed-goto
   * check out his excelent talk ["Non-conforming C++: the Secrets the Committee Is Hiding From You" on CppCon 2019](https://youtu.be/IAdLwUXRUvg) where he explains computed goto starting on [31:17](https://youtu.be/IAdLwUXRUvg?t=1877) (Lua implementation starts on [40:12](https://youtu.be/IAdLwUXRUvg?t=2412))
-* inlining functions with hot prolog and epilog
-  * Denis Bakhalov's [Performance analysis and tuning contest #3](https://easyperf.net/blog/2019/05/28/Performance-analysis-and-tuning-contest-3)
-  * check out his blog [easyperf.net](https://easyperf.net) for high quality articles about performance analysis and tuning, C/C++ compilers and CPU architecture
 
 
 # Other modifications
@@ -24,10 +21,15 @@ Modified source code of Lua 5.3.5 tuned for performance.
 There are other modifications related to building the code in different environments.
 
 
+# TODO
+* Denis Bakhalov's [Performance analysis and tuning contest #3](https://easyperf.net/blog/2019/05/28/Performance-analysis-and-tuning-contest-3)
+  * check out his blog [easyperf.net](https://easyperf.net) for high quality articles about performance analysis and tuning, C/C++ compilers and CPU architecture
+
+
 # Tested environments
 
 * Apple clang version 11.0.3 (clang-1103.0.32.59) on macOS Catalina
-
+* gcc 10.1.1 on [Clear Linux OS](https://clearlinux.org)
 
 # Author
 
