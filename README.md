@@ -1,17 +1,17 @@
 # Optimized Lua
 
-Modified source code of Lua 5.3.5 and Lua 5.4.1 tuned for performance.
+Modified source code of Lua 5.3.6 and Lua 5.4.2 tuned for performance.
 
 ![Lua logo](http://www.lua.org/images/lua-logo.gif)
 
 
 # Optimizations
 
-* tuned compiler flags (Lua 5.3.5 and Lua 5.4.1):
+* tuned compiler flags (Lua 5.3.6 and Lua 5.4.2):
   * set optimization level 3 (-O3)
   * enable link time optimization (-flto)
   * enable all instruction subsets supported by the local machine (-march=native)
-* computed goto (Lua 5.3.5) (stock Lua 5.4.1 implements it by default):
+* computed goto (Lua 5.3.6) (stock Lua 5.4.2 implements it by default):
   * Miro Knejp's https://github.com/mknejp/computed-goto
   * check out his excelent talk ["Non-conforming C++: the Secrets the Committee Is Hiding From You" on CppCon 2019](https://youtu.be/IAdLwUXRUvg) where he explains computed goto starting on [31:17](https://youtu.be/IAdLwUXRUvg?t=1877) (Lua implementation starts on [40:12](https://youtu.be/IAdLwUXRUvg?t=2412))
 
